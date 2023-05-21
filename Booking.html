@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Admin Portal</title>
+
+    <!--<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/">-->
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <!--<link href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/navbar-top-fixed.css" rel="stylesheet">-->
+    <style>
+        td, th, span,label  {
+            font-weight: 500 !important;
+            font-size: 13px !important;
+            word-wrap: break-word;
+            white-space: nowrap !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">ADMIN PORTAL</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="driver_list.html">Driver List</a></li>
+                    <li><a href="passenger_Booklist.html">Booking List</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-link">
+                        <div class="form-group" style="margin-top:12px;">
+                           <label id="lblUserId"></label> <label id="lblUserName" style="color:white;margin-right:30px;font-size:18px;text-transform:uppercase;"></label>
+                        </div>
+                    
+                    </li>
+                    <li class="nav-link"><div class="form-group" style="margin-top:10px;">
+                            <button type="button" id="btnlogout" class="btn btn-default"><span class="glyphicon glyphicon-log-in"></span> Logout</button>
+                        </div> </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="container-fluied">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <h3>Driver List</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <select class="form-control SearchText" id="ddlLocation"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                
+                    <div class="row" id="dvr">
+
+
+                    </div>
+               
+            </div>
+
+        </main>
+
+        <footer class="footer bg-dark">
+            <div class="container">
+                <span class="text-muted"></span>
+            </div>
+        </footer>
+    </div>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title"><label id="lblHed"></label>   Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="hfDriverId" />
+                    <input type="hidden" id="hfDriverName" />
+                    <p class="mymsg">Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnApprove" style="display:none;" class="btn btn-success">Approve</button>
+                    <button type="button" id="btnReject" style="display:none;" class="btn btn-danger">Reject</button>
+                    <button type="button" id="btnCancel" class="btn btn-info">Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="myModalBooking" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                     <input type="hidden" id="hfDriverId" />
+                    <h4 class="modal-title" style="color:brown;"> Booking Information  </h4> 
+                </div>
+                <div class="modal-body">
+
+                    
+                    <form class="form-horizontal">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-4 control-label">Booking Date</label>
+                                    <div class="col-md-8">
+                                        <input type="date" class="form-control" id="txtBookingDate" name="bookingDate" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-4 control-label">Pickup From</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="Source" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 control-label">Km to Travel</label>
+                                    <div class="col-md-8">
+                                        <input type="number" class="form-control" name="Km" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-4 control-label">Booking Time</label>
+                                    <div class="col-md-8">
+                                        <input type="time" class="form-control" name="bookingTime" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-4 control-label">Drop To</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="Destination" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 control-label">Travel Charges</label>
+                                    <div class="col-md-8">
+                                        <input type="number" class="form-control" name="Amount" placeholder="0.00" />
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+
+                      
+
+                      
+                       
+                       
+                     
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCreate" class="btn btn-primary" >Submit</button>
+                    <button type="button"  id="btnCancel" class="btn btn-danger">Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/Driver_List.js"></script>
+
+
+
+</body>
+</html>
